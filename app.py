@@ -240,9 +240,28 @@ st.markdown(
         color: var(--ice);
     }
 
+    div[data-baseweb="textarea"] textarea,
+    div[data-baseweb="input"] input {
+        color: #FAFAFA !important;
+    }
+
+    div[data-baseweb="textarea"] textarea::placeholder,
+    div[data-baseweb="input"] input::placeholder {
+        color: #A0A0A0 !important;
+    }
+
     .stTextArea textarea:focus, .stTextInput input:focus {
         border-color: rgba(0, 240, 255, 0.6);
         box-shadow: 0 0 0 1px rgba(0, 240, 255, 0.22);
+    }
+
+    [data-testid="stFileUploadDropzone"] {
+        background-color: #161A25 !important;
+        color: #FAFAFA !important;
+    }
+
+    [data-testid="stFileUploadDropzone"] * {
+        color: #FAFAFA !important;
     }
 
     div[data-baseweb="select"] > div {
