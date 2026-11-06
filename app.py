@@ -70,6 +70,17 @@ st.markdown(
         color: var(--ice);
     }
 
+    [data-testid="stSidebar"],
+    [data-testid="stSidebar"] *,
+    .stRadio label,
+    div[role="radiogroup"] label,
+    [data-testid="stFileUploadDropzone"],
+    [data-testid="stFileUploadDropzone"] *,
+    p,
+    span {
+        color: #FAFAFA !important;
+    }
+
     [data-testid="stHeader"], #MainMenu, footer {
         display: none;
     }
