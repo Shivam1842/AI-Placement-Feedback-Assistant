@@ -47,8 +47,9 @@ def reset_interview():
     st.session_state.resume_upload_version += 1
 
 
-st.markdown(
-    """
+def local_css():
+    st.markdown(
+        """
     <style>
     :root {
         color-scheme: dark;
@@ -62,12 +63,25 @@ st.markdown(
         --line: rgba(148, 163, 184, 0.16);
     }
 
-    .stApp {
+    .stApp,
+    [data-testid="stAppViewContainer"] {
         background:
             radial-gradient(ellipse at 82% 0%, rgba(52, 33, 99, 0.22), transparent 34%),
             radial-gradient(ellipse at 8% 18%, rgba(0, 240, 255, 0.07), transparent 30%),
-            var(--space);
-        color: var(--ice);
+            #0E1117 !important;
+        color: #FAFAFA !important;
+    }
+
+    p, span, div, label, h1, h2, h3 {
+        color: #FAFAFA !important;
+    }
+
+    h1 {
+        background: linear-gradient(90deg, #00F0FF 0%, #A6F8FF 48%, #8A2BE2 100%) !important;
+        background-clip: text !important;
+        -webkit-background-clip: text !important;
+        color: transparent !important;
+        -webkit-text-fill-color: transparent !important;
     }
 
     [data-testid="stSidebar"],
@@ -91,8 +105,10 @@ st.markdown(
     }
 
     section[data-testid="stSidebar"] {
-        background: rgba(16, 20, 30, 0.94);
+        background: rgba(16, 20, 30, 0.82) !important;
         border-right: 1px solid var(--line);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
     }
 
     section[data-testid="stSidebar"] > div {
@@ -107,7 +123,7 @@ st.markdown(
     }
 
     .brand-mark span {
-        color: var(--cyan);
+        color: var(--cyan) !important;
     }
 
     .brand-caption, .muted-copy {
@@ -144,7 +160,7 @@ st.markdown(
     }
 
     .hero-kicker, .eyebrow {
-        color: var(--cyan);
+        color: var(--cyan) !important;
         font-size: 0.72rem;
         font-weight: 750;
         letter-spacing: 0.16em;
@@ -157,10 +173,6 @@ st.markdown(
         font-weight: 850;
         line-height: 1.08;
         letter-spacing: -0.055em;
-        background: linear-gradient(90deg, #00F0FF 0%, #A6F8FF 48%, #8A2BE2 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
     }
 
     .hero p {
@@ -213,41 +225,48 @@ st.markdown(
         color: var(--ice);
     }
 
-    .stButton > button, .stDownloadButton > button {
+    .stButton > button,
+    .stDownloadButton > button {
         min-height: 2.8rem;
         border-radius: 11px;
         font-weight: 680;
         transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+        background-color: #161A25 !important;
+        color: #FAFAFA !important;
     }
 
     .stButton > button:hover, .stDownloadButton > button:hover {
-        border-color: rgba(0, 240, 255, 0.65);
+        border-color: #00F0FF !important;
         box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
         transform: translateY(-1px);
     }
 
     .stButton > button[kind="primary"] {
         border: 1px solid rgba(0, 240, 255, 0.52);
-        background: linear-gradient(105deg, rgba(0, 169, 190, 0.95), rgba(106, 52, 186, 0.95));
-        color: #FFFFFF;
+        background: linear-gradient(105deg, rgba(0, 169, 190, 0.95), rgba(106, 52, 186, 0.95)) !important;
+        color: #FFFFFF !important;
         box-shadow: 0 8px 26px rgba(0, 197, 218, 0.16);
     }
 
-    .stTextArea textarea, .stTextInput input {
-        border: 1px solid rgba(148, 163, 184, 0.22);
-        border-radius: 12px;
-        background: rgba(10, 14, 22, 0.68);
-        color: var(--ice);
+    .stButton > button[kind="primary"]:hover,
+    .stDownloadButton > button:hover {
+        border-color: #00F0FF !important;
+        box-shadow: 0 0 22px rgba(0, 240, 255, 0.28);
+        transform: translateY(-1px);
     }
 
-    div[data-baseweb="textarea"] textarea,
-    div[data-baseweb="input"] input {
+    div[data-baseweb="input"] input,
+    div[data-baseweb="textarea"] textarea {
+        border: 1px solid #333 !important;
+        border-radius: 12px;
+        background: rgba(22, 26, 37, 0.7) !important;
         color: #FAFAFA !important;
     }
 
     div[data-baseweb="textarea"] textarea::placeholder,
     div[data-baseweb="input"] input::placeholder {
-        color: #A0A0A0 !important;
+        color: #888888 !important;
+        opacity: 1 !important;
     }
 
     .stTextArea textarea:focus, .stTextInput input:focus {
@@ -256,18 +275,40 @@ st.markdown(
     }
 
     [data-testid="stFileUploadDropzone"] {
-        background-color: #161A25 !important;
+        background: #161A25 !important;
+        border: 1px dashed #00F0FF !important;
         color: #FAFAFA !important;
     }
 
-    [data-testid="stFileUploadDropzone"] * {
+    [data-testid="stFileUploadDropzone"] *,
+    [data-testid="stFileUploadDropzone"] svg {
         color: #FAFAFA !important;
+        fill: #FAFAFA !important;
+    }
+
+    .stRadio label,
+    .stCheckbox label,
+    div[role="radiogroup"] label {
+        color: #FAFAFA !important;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+        accent-color: #00F0FF !important;
     }
 
     div[data-baseweb="select"] > div {
-        border-color: rgba(148, 163, 184, 0.22);
+        border: 1px solid #333 !important;
         border-radius: 11px;
-        background: rgba(10, 14, 22, 0.68);
+        background: rgba(22, 26, 37, 0.7) !important;
+        color: #FAFAFA !important;
+    }
+
+    div[data-baseweb="popover"],
+    ul[role="listbox"],
+    li[role="option"] {
+        background: #161A25 !important;
+        color: #FAFAFA !important;
     }
 
     div[role="radiogroup"] {
@@ -329,8 +370,11 @@ st.markdown(
     }
     </style>
     """,
-    unsafe_allow_html=True,
-)
+        unsafe_allow_html=True,
+    )
+
+
+local_css()
 
 
 with st.sidebar:
