@@ -548,7 +548,7 @@ with main_columns[1]:
             with st.chat_message("user", avatar="🧑‍💻"):
                 st.markdown("**Your answer**")
                 st.write(result["student_answer"])
-            with st.chat_message("assistant", avatar="✦"):
+            with st.chat_message("assistant", avatar="🤖"):
                 st.markdown(
                     f"**Coach review · {score}/10**  \n"
                     f"{'You are on the right track.' if score >= 7 else 'There is room to make this answer clearer and more complete.'}"
