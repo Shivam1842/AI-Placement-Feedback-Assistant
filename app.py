@@ -95,8 +95,22 @@ def local_css():
         color: #FAFAFA !important;
     }
 
-    [data-testid="stHeader"], #MainMenu, footer {
+    [data-testid="stHeader"] {
+        background: transparent !important;
+    }
+
+    #MainMenu, footer {
         display: none;
+    }
+
+    [data-testid="collapsedControl"] {
+        display: block !important;
+        visibility: visible !important;
+        color: #00F0FF !important;
+    }
+
+    [data-testid="collapsedControl"] svg {
+        fill: #00F0FF !important;
     }
 
     .block-container {
