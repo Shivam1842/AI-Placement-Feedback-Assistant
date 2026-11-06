@@ -1,0 +1,19 @@
+# Security (CRITICAL: Keeps your API keys out of GitHub)
+.env
+
+# Virtual Environments (Prevents uploading massive library folders)
+myenv/
+venv/
+env/
+
+# Python Cache Files (Hidden files Python generates automatically)
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE / Editor Folders (Prevents uploading your personal VS Code settings)
+.vscode/
+
+# Streamlit 
+.streamlit/
+final/
